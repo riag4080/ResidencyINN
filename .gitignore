@@ -1,0 +1,36 @@
+# ========== FRONTEND (client) ==========
+client/node_modules/
+client/dist/
+client/.vite/
+client/.next/
+client/.parcel-cache/
+client/.env
+client/.DS_Store
+client/npm-debug.log
+client/yarn-debug.log
+client/yarn-error.log
+
+# ========== BACKEND (residencyInn - Spring Boot) ==========
+residencyInn/.idea/
+residencyInn/.mvn/
+residencyInn/target/
+residencyInn/*.iml
+residencyInn/*.log
+residencyInn/.classpath
+residencyInn/.project
+residencyInn/.settings/
+
+# ========== General ==========
+*.log
+*.class
+*.swp
+*.swo
+*.env
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# ========== OS and Editor junk ==========
+.vscode/
+*.bak
+*.tmp
