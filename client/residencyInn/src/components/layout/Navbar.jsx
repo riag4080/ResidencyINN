@@ -14,7 +14,7 @@ const NavBar = () => {
 		<nav className="navbar navbar-expand-lg bg-body-tertiary px-5 shadow mt-5 sticky-top">
 			<div className="container-fluid">
 				<Link to={"/"} className="navbar-brand">
-					<span className="hotel-color">residencyInn</span>
+					<span className="hotel-color">ResidencyInn</span>
 				</Link>
 
 				<button
@@ -47,7 +47,7 @@ const NavBar = () => {
 					<ul className="d-flex navbar-nav">
 						<li className="nav-item">
 							<NavLink className="nav-link" to={"/find-booking"}>
-								Find my booking
+								 My bookings
 							</NavLink>
 						</li>
 
@@ -64,29 +64,24 @@ const NavBar = () => {
                                 
 							</a>
 
-							<ul  
-                            className={`dropdown-menu ${showAccount ? "show" : ""}`}
-								aria-labelledby="navbarDropdown">
-                                    
-									<li>
-										<Link className="dropdown-item" to={"/login"}>
-											Login
-										</Link>
+							<ul className={`dropdown-menu ${showAccount ? "show" : ""}`}aria-labelledby="navbarDropdown">
+                <li>
+									<Link className="dropdown-item" to={"/login"}>
+										Login
+									</Link>
 									</li>
 								
-                                <li>
-										<Link className="dropdown-item" to={"/profile"}>
+                  <li>
+										<Link className="dropdown-item drop-css" to={"/profile"}>
 											Profile
 										</Link>
 									</li>
 
-                                    <li>
+                  <li>
 										<Link className="dropdown-item" to={"/logout"}>
 											Logout
 										</Link>
 									</li>
-
-
 							</ul>
 						</li>
 					</ul>

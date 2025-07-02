@@ -4,14 +4,14 @@ import { Link, useParams } from "react-router-dom"
 
 const EditRoom = () => {
 	const [room, setRoom] = useState({
-		photo: "",
+		photo: null,
 		roomType: "",
 		roomPrice: ""
 	})
 
 	const [successMessage, setSuccessMessage] = useState("")
 	const [errorMessage, setErrorMessage] = useState("")
-    	const [imagePreview, setImagePreview] = useState("")
+  const [imagePreview, setImagePreview] = useState("")
 
 	const { roomId } = useParams()
 
@@ -62,7 +62,7 @@ const EditRoom = () => {
 
 	return (
 		<div className="container mt-5 mb-5">
-			<h3 className="text-center mb-5 mt-5">Edit Room</h3>
+			<h2 className="text-center mb-5 mt-5">Edit Room</h2>
 			<div className="row justify-content-center">
 				<div className="col-md-8 col-lg-6">
 					{successMessage && (

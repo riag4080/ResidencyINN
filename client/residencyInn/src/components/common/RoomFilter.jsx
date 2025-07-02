@@ -8,9 +8,9 @@ const RoomFilter = ({ data, setFilteredData }) => {
 		setFilter(selectedRoomType)
 
 		const filteredRooms = data.filter((room) =>
-			room.roomType.toLowerCase().includes(selectedRoomType.toLowerCase())
-		)
-		setFilteredData(filteredRooms)
+			room.roomType.toLowerCase()
+			.includes(selectedRoomType.toLowerCase()))
+			setFilteredData(filteredRooms)
 	}
 
 	const clearFilter = () => {
@@ -23,7 +23,7 @@ const RoomFilter = ({ data, setFilteredData }) => {
 	return (
 		<div className="input-group mb-3">
 			<span className="input-group-text" id="room-type-filter">
-				FIlter rooms by type
+				Filter rooms by type
 			</span>
 			<select
 				className="form-select"
@@ -36,7 +36,7 @@ const RoomFilter = ({ data, setFilteredData }) => {
 					</option>
 				))}
 			</select>
-			<button className="btn btn-hotel" type="button" onClick={clearFilter}>
+			<button className="btn-hotel" type="button" onClick={clearFilter}>
 				Clear Filter
 			</button>
 		</div>

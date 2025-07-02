@@ -13,6 +13,7 @@ const Room = () => {
 	const [roomsPerPage] = useState(6)
 	const [filteredData, setFilteredData] = useState([{ id: "" }])
 
+
 	useEffect(() => {
 		setIsLoading(true)
 		getAllRooms()
@@ -27,7 +28,7 @@ const Room = () => {
 			})
 	}, [])
 	if (isLoading) {
-		return <div>Loading rooms.....</div>
+		return <div>Loading rooms....</div>
 	}
 	if (error) {
 		return <div className=" text-danger">Error : {error}</div>
@@ -44,7 +45,7 @@ const Room = () => {
 		const endIndex = startIndex + roomsPerPage
 		return filteredData
 			.slice(startIndex, endIndex)
-			.map((room) => <RoomCard  key={room.id} room={room} />)
+			.map((room) => <RoomCard  key={room.id} room={room}/>)
 	}
 
 	return (

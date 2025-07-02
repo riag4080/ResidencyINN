@@ -40,17 +40,18 @@ const ExistingRooms = () => {
 			setFilteredRooms(filtered)
 		}
 		setCurrentPage(1)
-	}, [rooms, selectedRoomType])
+	}, [rooms, selectedRoomType]) //Runs the enclosed code every time either rooms or selectedRoomType changes.
+	
 
 	const handlePaginationClick = (pageNumber) => {
 		setCurrentPage(pageNumber)
 	}
 
-    	const handleDelete = async (roomId) => {
+  const handleDelete = async (roomId) => {
 		try {
 			const result = await deleteRoom(roomId)
 			if (result === "") {
-				setSuccessMessage(`Room No ${roomId} was delete`)
+				setSuccessMessage(`Room No ${roomId} is deleted`)
 				fetchRooms()
 			} else {
 				console.error(`Error deleting room : ${result.message}`)
@@ -84,14 +85,14 @@ const ExistingRooms = () => {
 					<section className="mt-5 mb-5 container">
 						<div className="d-flex justify-content-between mb-3 mt-5">
 							<h2>Existing Rooms</h2>
-
 						</div>
-<Row>
+
+						<Row>
 							<Col md={6} className="mb-2 md-mb-0">
 								<RoomFilter data={rooms} setFilteredData={setFilteredRooms} />
 							</Col>
-<Col md={6} className="d-flex justify-content-end">
-								<Link to={"/add-room"}>
+							<Col md={6} className="d-flex justify-content-end text-center">
+								<Link className="btn-hotel mb-4" to={"/add-room"}>
 									<FaPlus /> Add Room
 								</Link>
 							</Col>				
@@ -114,18 +115,18 @@ const ExistingRooms = () => {
 										<td>{room.roomType}</td>
 										<td>{room.roomPrice}</td>
 										<td className="gap-2">
-<Link to={`/edit-room/${room.id}`} className="gap-2">
-												<span className="btn btn-info btn-sm">
-													<FaEye />
-												</span>
-												<span className="btn btn-warning btn-sm ml-5">
-													<FaEdit />
-												</span>
-											</Link><button
-												className="btn btn-danger btn-sm ml-5"
-												onClick={() => handleDelete(room.id)}>
-												<FaTrashAlt />
-											</button>										</td>
+										<Link to={`/edit-room/${room.id}`} className="gap-2">
+										<span className="btn btn-info btn-sm">
+											<FaEye/>
+										</span>
+										<span className="btn btn-warning btn-sm ml-5">
+											<FaEdit/>
+										</span>
+										</Link>
+										<button className="btn btn-danger btn-sm ml-5" onClick={() => handleDelete(room.id)}>
+											<FaTrashAlt/>
+										</button>										
+										</td>
 									</tr>
 								))}
 							</tbody>

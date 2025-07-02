@@ -19,13 +19,14 @@ const AddRoom = () => {
 		let value = e.target.value
 		if (name === "roomPrice") {
 			if (!isNaN(value)) {
-				value=parseInt(value)
+				value = parseInt(value)
 			} else {
 				value = ""
 			}
 		}
 		setNewRoom({ ...newRoom, [name]: value })
 	}
+
 const handleImageChange = (e) => {
 		const selectedImage = e.target.files[0]
 		setNewRoom({ ...newRoom, photo: selectedImage })
@@ -37,7 +38,7 @@ const handleSubmit = async (e) => {
 		try {
 			const success = await addRoom(newRoom.photo, newRoom.roomType, newRoom.roomPrice)
 			if (success !== undefined) {
-				setSuccessMessage("A new room was  added successfully !")
+				setSuccessMessage("A new room added successfully !")
 				setNewRoom({ photo: null, roomType: "", roomPrice: "" })
 				setImagePreview("")
 				setErrorMessage("")
@@ -47,7 +48,11 @@ const handleSubmit = async (e) => {
 		} catch (error) {
 			setErrorMessage(error.message)
 		}
-    }
+		setTimeout(() => {
+			setSuccessMessage("")
+			setErrorMessage("")
+		}, 3000)
+  }
   return(   
     <>
 
@@ -55,7 +60,7 @@ const handleSubmit = async (e) => {
 				<div className="row justify-content-center">
 					<div className="col-md-8 col-lg-6">
 						<h2 className="mt-5 mb-2">Add a New Room</h2>
-	{successMessage && (
+							{successMessage && (
 							<div className="alert alert-success fade show"> {successMessage}</div>
 						)}
 
@@ -75,14 +80,14 @@ const handleSubmit = async (e) => {
 								</div>
 							</div>
 							<div className="mb-3">
-								<label htmlFor="roomPrice" className="form-label">
+								<label htmlFor="roomPrice"className="form-label">
 									Room Price
 								</label>
 								<input
 									required
 									className="form-control"
 									id="roomPrice"
-                                    type="number"
+                  type="number"
 									name="roomPrice"
 									value={newRoom.roomPrice}
 									onChange={handleRoomInputChange}
@@ -90,7 +95,7 @@ const handleSubmit = async (e) => {
 							</div>
 
 							<div className="mb-3">
-								<label htmlFor="photo" className="form-label">
+								<label htmlFor="photo"className="form-label">
 									Room Photo
 								</label>
 								<input
@@ -104,14 +109,13 @@ const handleSubmit = async (e) => {
 								{imagePreview && (
 									<img
 										src={imagePreview}
-										alt="Preview  room photo"
+										alt="Preview Room Photo"
 										style={{ maxWidth: "400px", maxHeight: "400px" }}
 										className="mb-3"></img>
 								)}
 							</div>
 							<div className="d-grid gap-2 d-md-flex mt-2">
-								<Link to={"/existing-rooms"} className="btn btn-outline-info">
-								Back 
+								<Link to={"/existing-rooms"} className="btn btn-outline-info">Back 
 								</Link>
 								<button type="submit" className="btn btn-outline-primary ml-5">
 									Save Room
@@ -121,8 +125,6 @@ const handleSubmit = async (e) => {
 					</div>
 				</div>
 			</section>
-
-
     </>
 )  ;
 }

@@ -3,14 +3,14 @@ import { getRoomTypes } from "../utils/ApiFunctions"
 
 const RoomTypeSelector = ({ handleRoomInputChange, newRoom }) => {
 	const [roomTypes, setRoomTypes] = useState([""])
-	const [showNewRoomTypeInput, setShowNewRoomTypeInput] = useState(false)
+	const [showNewRoomTypeInput, setShowNewRoomTypeInput] = useState(false) // if previously that type not exists to add
 	const [newRoomType, setNewRoomType] = useState("")
 
 	useEffect(() => {
 		getRoomTypes().then((data) => {
 			setRoomTypes(data)
 		})
-	}, [])
+	}, []) // to get all the data from database and populate here
 
 	const handleNewRoomTypeInputChange = (e) => {
 		setNewRoomType(e.target.value)
@@ -31,16 +31,16 @@ const RoomTypeSelector = ({ handleRoomInputChange, newRoom }) => {
 					<select
 						required
 						className="form-select"
-                        id='roomType'
+            id='roomType'
 						name="roomType"
+						value={newRoom.roomType}
 						onChange={(e) => {
 							if (e.target.value === "Add New") {
 								setShowNewRoomTypeInput(true)
 							} else {
 								handleRoomInputChange(e)
 							}
-						}}
-						value={newRoom.roomType}>
+						}}>
 						<option value="">Select a room type</option>
 						<option value={"Add New"}>Add New</option>
 						{roomTypes.map((type, index) => (
@@ -56,7 +56,7 @@ const RoomTypeSelector = ({ handleRoomInputChange, newRoom }) => {
 									type="text"
 									className="form-control"
 									placeholder="Enter New Room Type"
-									value={newRoomType}
+									//value={newRoomType}
 									onChange={handleNewRoomTypeInputChange}
 								/>
 								<button className="btn btn-hotel" type="button" onClick={handleAddNewRoomType}>
